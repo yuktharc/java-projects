@@ -42,7 +42,7 @@ public class StringEqualsAndHashCodeDemo {
 		 */
 		System.out.println(x == y); // false
 		System.out.println(x == y.intern()); // false
-		
+
 		// ===========================================================================
 		// String Object - different values comparision but same hash code
 		x = "FB";
@@ -88,6 +88,17 @@ public class StringEqualsAndHashCodeDemo {
 		 * pool and a reference to this {@code String} object is returned.
 		 * 
 		 * In this case the string from the pool is returned.
+		 */
+		/**
+		 * Basically doing String.intern() on a series of strings will ensure
+		 * that all strings having same contents share same memory. So if you
+		 * have list of names where 'john' appears 1000 times, by interning you
+		 * ensure only one 'john' is actually allocated memory.
+		 * 
+		 * This can be useful to reduce memory requirements of your program. But
+		 * be aware that the cache is maintained by JVM in permanent memory pool
+		 * which is usually limited in size compared to heap so you should not
+		 * use intern if you don't have too many duplicate values.
 		 */
 		System.out.println(x == y.intern()); // true
 
